@@ -394,6 +394,14 @@ body {
   max-width: 1000px;
 }
 
+.timeline-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
 .timeline::before {
   content: '';
   position: absolute;
@@ -573,6 +581,7 @@ body {
     font-size: 1rem;
     line-height: 1.6;
 }
+
 
 
 
