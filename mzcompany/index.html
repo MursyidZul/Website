@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MZ Company</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #121212;
+            color: white;
+            overflow-x: hidden;
+            /* ✅ Prevent horizontal overflow */
+
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #1e1e1e;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            /* space between logo and links */
+            z-index: 1000;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            flex-shrink: 0;
+            /* Don't shrink logo */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 50px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            flex: 1;
+            /* Let this take remaining space */
+            justify-content: flex-end;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            text-align: center;
+            padding: 120px 20px 60px;
+        }
+
+        .container h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .container p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            margin-top: 40px;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #00aced;
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .contact-button {
+            background-color: #00aced;
+            border: none;
+            padding: 8px 14px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #0084a2;
+            /* Slightly darker on hover */
+        }
+
+        .projects,
+        .contact-form,
+        .showcase {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .project-item,
+        .showcase-item {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .project-item.visible,
+        .showcase-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #00aced;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0084a2;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            background-color: #1e1e1e;
+        }
+
+
+        /* ===== Responsive Mobile Design ===== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .nav-links {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+        padding: 6px 0;
+    }
+
+    .container {
+        padding: 100px 16px 40px;
+    }
+
+    .container h1 {
+        font-size: 30px;
+    }
+
+    .container p {
+        font-size: 16px;
+    }
+
+    .social-icons a {
+        font-size: 20px;
+        margin: 0 6px;
+    }
+
+    section h2 {
+        font-size: 24px;
+    }
+
+    .project-item,
+    .showcase-item {
+        padding: 16px;
+    }
+
+    .contact-button {
+        padding: 10px 16px;
+        font-size: 15px;
+    }
+
+    form input,
+    form textarea {
+        font-size: 14px;
+    }
+
+    footer {
+        font-size: 13px;
+        padding: 15px;
+    }
+}
+
+/* For smaller phones */
+@media (max-width: 480px) {
+    .container h1 {
+        font-size: 26px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .project-item,
+    .showcase-item {
+        font-size: 14px;
+    }
+
+    .contact-button {
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="images/mz white.png" alt="MZ Logo">
+            <a href="../index.html" style="text-decoration: none; color: white; font-size: 14px;">@mursyidzul</a>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="business.html">Business</a>
+        </div>
+    </nav>
+
+    <div class="container" id="home">
+        <h1>Welcome to MZ Company</h1>
+        <p>We are passionate about technology, design, and innovation. MZ Company brings creative ideas to life through
+            digital products, media, and development. Let us show you what we can do.</p>
+
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+
+    </div>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="projects">
+            <div class="project-item">
+                <h3>UI/UX Design</h3>
+                <p>We design intuitive and visually engaging interfaces for websites and mobile apps.</p>
+            </div>
+            <div class="project-item">
+                <h3>Website Development</h3>
+                <p>Full-stack development services tailored to your business needs — fast, secure, and scalable.</p>
+            </div>
+            <div class="project-item">
+                <h3>Brand & Media</h3>
+                <p>We create logos, posters, and social media content that bring your brand identity to life.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Project Showcase</h2>
+        <div class="showcase">
+            <div class="showcase-item">
+                <h3>Tacob's Barbershop</h3>
+                <p>A barbershop booking system web app designed to streamline appointments.</p>
+            </div>
+            <div class="showcase-item">
+                <h3>No Poverty Mobile App</h3>
+                <p>A prototype mobile app designed to promote awareness and action toward SDG goals.</p>
+            </div>
+            <div class="showcase-item">
+                <h3>Bino App Interface</h3>
+                <p>Modern clean interface design tailored for mobile-first users.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-form">
+            <form action="mailto:mzcompany2025@gmail.com" method="POST" enctype="text/plain">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section> 
+    -->
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Click the button below to send us an email.</p>
+        <br>
+        <button class="contact-button" onclick="window.location.href='mailto:mursyidzul90@gmail.com'">Send
+            Email</button>
+    </section>
+
+    <footer>
+        &copy; 2025 MZ Company. All rights reserved.
+    </footer>
+
+    <script>
+        const items = document.querySelectorAll('.project-item, .showcase-item');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        items.forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+
+</body>
+
+</html>

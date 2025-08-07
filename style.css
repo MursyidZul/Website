@@ -48,8 +48,6 @@ a {
     } */
 
 
-
-
 /* Basic styles for the navigation bar */
 nav {
     display: flex;
@@ -547,11 +545,18 @@ body {
 /*Project Image*/
 .image4-section-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:nowrap;
     justify-content: center;
-    gap: 30px;
+    gap: 50px;
     padding: 40px 20px;
     background-color: #ffffff;
+}
+
+.image4-section-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 30px; /* Reduced spacing */
+  justify-items: center;
 }
 
 .image4-section {
@@ -658,3 +663,7 @@ body {
     font-size: 1rem;
     line-height: 1.6;
 }
+
+
+
+
