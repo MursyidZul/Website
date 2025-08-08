@@ -778,5 +778,77 @@ body {
   }
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #1e1e1e;
+  flex-wrap: nowrap; /* Prevent wrapping on desktop */
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.left-section .logo img {
+  width: 60px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.left-section .logo a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  white-space: nowrap;  /* Prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px; /* Limit width to avoid overflow */
+}
+
+/* Right Section styles */
+.right-section {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap; /* No wrapping on desktop */
+  white-space: nowrap;
+}
+
+/* ==== MOBILE === */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap; /* Allow wrapping on mobile */
+    align-items: flex-start;
+  }
+
+  .left-section {
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .right-section {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-start;
+  }
+
+  .right-section a {
+    flex: 1 1 auto; /* Allow buttons to shrink/grow */
+    min-width: 90px; /* Minimum width so text not too squished */
+    text-align: center;
+    white-space: nowrap;
+    padding: 6px 4px;
+    box-sizing: border-box;
+  }
+}
+
+
+
 
 
