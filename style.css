@@ -778,6 +778,7 @@ body {
   }
 }
 
+/* Existing nav styles remain as-is, just add/update these */
 nav {
   display: flex;
   justify-content: space-between;
@@ -807,7 +808,7 @@ nav {
   white-space: nowrap;  /* Prevent wrapping */
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 120px; /* Limit width to avoid overflow */
+  max-width: 120px; /* Limit width so it doesn't push others */
 }
 
 /* Right Section styles */
@@ -821,7 +822,7 @@ nav {
 /* ==== MOBILE === */
 @media (max-width: 768px) {
   nav {
-    flex-wrap: wrap; /* Allow wrapping on mobile */
+    flex-wrap: wrap; /* Allow nav items to wrap */
     align-items: flex-start;
   }
 
@@ -839,15 +840,14 @@ nav {
   }
 
   .right-section a {
-    flex: 1 1 auto; /* Allow buttons to shrink/grow */
-    min-width: 90px; /* Minimum width so text not too squished */
+    flex: 1 1 auto; /* Allow links to grow/shrink */
+    min-width: 90px; /* Prevent links getting too narrow */
     text-align: center;
     white-space: nowrap;
     padding: 6px 4px;
     box-sizing: border-box;
   }
 }
-
 
 
 
