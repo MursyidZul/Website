@@ -274,6 +274,43 @@
     }
 }
 
+        @media (max-width: 768px) {
+    /* Existing styles ... */
+
+    .logo {
+        /* Make logo flex container wrap if needed */
+        flex-wrap: nowrap; /* prevent wrapping between logo img and text */
+        width: 100%;
+        justify-content: flex-start; /* align left */
+        gap: 10px;
+        overflow: hidden; /* prevent overflow */
+    }
+
+    .logo img {
+        max-width: 40px; /* shrink logo on mobile */
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .logo a {
+        white-space: nowrap; /* prevent the @mursyidzul text from breaking lines */
+        overflow: hidden;
+        text-overflow: ellipsis; /* add ... if too long */
+        max-width: calc(100% - 50px); /* limit text width to prevent overlap */
+        font-size: 14px;
+    }
+
+    .nav-links {
+        width: 100%;
+        margin-top: 10px; /* separate nav-links from logo */
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+        white-space: normal; /* allow wrapping */
+    }
+}
+
+
     </style>
 </head>
 
@@ -390,3 +427,4 @@
 
 
 </html>
+
