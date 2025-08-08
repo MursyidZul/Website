@@ -822,32 +822,62 @@ nav {
 /* ==== MOBILE === */
 @media (max-width: 768px) {
   nav {
-    flex-wrap: wrap; /* Allow nav items to wrap */
+    flex-wrap: wrap; /* allow stacking */
     align-items: flex-start;
   }
 
   .left-section {
     width: 100%;
-    justify-content: flex-start;
-    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: nowrap; /* prevent wrapping inside */
+  }
+
+  .left-section .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap; /* keep logo + text in one row */
+    flex-shrink: 0;
+  }
+
+  .left-section .logo img {
+    width: 40px; /* smaller logo on mobile */
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .left-section .logo a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100vw - 60px); /* dynamic max width so it fits beside logo */
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
   }
 
   .right-section {
     width: 100%;
+    display: flex;
     flex-wrap: wrap;
     gap: 12px;
     justify-content: flex-start;
   }
 
   .right-section a {
-    flex: 1 1 auto; /* Allow links to grow/shrink */
-    min-width: 90px; /* Prevent links getting too narrow */
+    flex: 1 1 auto; /* flexible buttons */
+    min-width: 90px;
     text-align: center;
     white-space: nowrap;
-    padding: 6px 4px;
+    padding: 6px 8px;
     box-sizing: border-box;
   }
 }
+
+
 
 
 
