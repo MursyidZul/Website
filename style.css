@@ -1,11 +1,8 @@
-* {
-  box-sizing: border-box;
-}
-
 img {
     max-width: 100%;
     height: auto;
 }
+
 
 
 body {
@@ -386,12 +383,12 @@ body {
 
 
 /* Timeline Section Styling (Light Mode) */
-.timeline {
-  position: relative;
-  margin: 0 auto;
-  padding: 20px 0;
-  width: 90%;
-  max-width: 1000px;
+.timeline-section {
+    background: #ffffff;
+    color: #333;
+    padding: 60px 20px;
+    font-family: Arial, sans-serif;
+    position: relative;
 }
 
 .timeline-title {
@@ -402,31 +399,31 @@ body {
     margin-bottom: 40px;
 }
 
+.timeline {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px 0;
+    width: 90%;
+    max-width: 1000px;
+}
+
 .timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  width: 4px;
-  background-color: #FF8080;
-  top: 0;
-  bottom: 0;
-  transform: translateX(-50%);
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 4px;
+    background-color: #FF8080;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
 }
 
 .timeline-item {
-    display: flex;
+    display:flex;
     justify-content: space-between;
     margin-bottom: 50px;
     position: relative;
     width: 100%;
-}
-
-.timeline-content {
-  width: 45%;
-  padding: 20px;
-  background: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .timeline-item::before {
@@ -497,51 +494,65 @@ body {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Align left content */
+.timeline-content.left {
+    margin-right: auto;
+    text-align: left;
+}
+
+/* Align right content */
+.timeline-content.right {
+    margin-left: auto;
+    text-align: left;
+}
+
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-  .timeline::before {
-    left: 20px;
-  }
+    .timeline {
+        width: 100%;
+    }
 
-  .timeline-item {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 40px;
-    width: 100%;
-  }
+    .timeline::before {
+        left: 8px;
+    }
 
-  .timeline-item::before {
-    left: 12px;
-    top: 10px;
-    transform: none;
-  }
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 30px;
+    }
 
-  .timeline-content {
-    width: calc(100% - 40px); /* ✅ Leaves space for vertical line */
-    max-width: none;
-    text-align: left;
-    padding: 15px;
-  }
+    .timeline-item::before {
+        left: 0;
+        top: 0;
+        transform: translateY(0);
+    }
 
-  .left, .right {
-    text-align: left !important;
-  }
+    .timeline-content {
+        width: 100%;
+        text-align: left;
+    }
+
+    .left,
+    .right {
+        text-align: left;
+    }
 }
 
 
 
 
-
-/*Project Image for container*/
+/*Project Image*/
 .image4-section-container {
     display: flex;
-    flex-wrap: wrap; /* ✅ FIX: allow wrapping */
+    flex-wrap:nowrap;
     justify-content: center;
-    gap: 30px;
+    gap: 50px;
     padding: 40px 20px;
     background-color: #ffffff;
 }
+
 
 .image4-section {
     width: 100%;
@@ -584,18 +595,14 @@ body {
 /* Responsive Layout */
 @media (max-width: 768px) {
     .image4-section-container {
-        display: flex; /* ✅ Ensures it stacks properly on mobile */
         flex-direction: column;
         align-items: center;
-        gap: 20px;
     }
 
     .image4-section {
         max-width: 90%;
-        width: 100%;
     }
 }
-
 
 .image4-link, .image5-link {
   display: block;
@@ -607,7 +614,6 @@ body {
   opacity: 0.9; /* Optional: add hover effect */
   cursor: pointer;
 }
-
 
 
 
@@ -652,10 +658,125 @@ body {
 }
 
 
+/*Video */
+.image6-section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px 10px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.image6-section {
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.image6-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image6-text {
+    padding: 20px;
+    text-align: left;
+}
+
+.image6-text h3 {
+    color: #F06565;
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+}
+
+.image6-text p {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.same-size {
+  width: 430px;      /* increased from 340px */
+  height: 304px;     /* adjusted height to keep roughly same aspect ratio */
+  object-fit: cover;
+  display: block;
+}
+
+#thumbnail {
+  cursor: pointer;
+}
+
+.image6-section-container {
+  max-width: 430px;  /* increased container width to match */
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.image6-text {
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* Your original CSS above... (unchanged) */
 
 
+/* --- Additional Responsive Adjustments --- */
 
+/* Make image-section and image3-section widths more fluid */
+@media (max-width: 1024px) {
+  .image-section,
+  .image3-section {
+    width: 90%;  /* flexible width instead of fixed px */
+    max-width: 400px;
+  }
+}
 
+/* Prevent horizontal overflow from nav sections */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap; /* allow nav items to wrap instead of squeezing */
+  }
+  .left-section,
+  .right-section {
+    flex-wrap: wrap;
+    justify-content: center; /* center nav items on small screens */
+  }
+}
+
+/* Fix section>div flex container on smaller screens */
+@media (max-width: 768px) {
+  section > div {
+    flex-wrap: wrap !important; /* ensure children wrap */
+    justify-content: center !important;
+  }
+}
+
+/* Images inside .random-size, keep max width and auto height */
+.random-size {
+  max-width: 280px;
+  width: 100%;
+  height: auto !important;
+}
+
+/* Make sure timeline content doesn't overflow on small screens */
+@media (max-width: 600px) {
+  .timeline-content {
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
+/* Footer social icons spacing on very small screens */
+@media (max-width: 400px) {
+  .social-icons a {
+    font-size: 20px;
+    margin: 0 6px;
+  }
+}
 
 
 

@@ -26,6 +26,7 @@
     <div class="left-section">
       <div class="logo" style="display: flex; align-items: flex-end; gap: 8px;">
         <img src="images/mz white.png" alt="MZ Logo" style="width: 60px;">
+        <a href="mzcompany/index.html" style="text-decoration: none; color: white; font-size: 14px;">MZCompany</a>
       </div>
     </div>
 
@@ -254,7 +255,16 @@
           </div>
         </a>
 
-      </div>
+        <!--  <a href="images/Inkscape.png" class="image4-link" target="_blank">
+          <div class="image4-section">
+            <img src="images/Inkscape.png" alt="Inkscape">
+            <div class="image4-text">
+              <h3>Inkscape</h3>
+              <p>Created a personal "mz" logo using Inkscape, combining shapes and text for a clean, modern look.</p>
+            </div>
+          </div>
+        </a> -->
+      </div> 
 
       <div class="image5-section-container">
         <div class="image5-section">
@@ -281,26 +291,51 @@
     <div style="text-align: center;">
       <h2>Self-Project: Coming Soon!</h2>
       <p>Here are some of the self-projects I've worked on during my free time:</p>
-      <ul style="list-style-type: none; padding: 0; font-size: 17px; text-align: left; max-width: 800px; margin: 0 auto;">
+      <ul
+        style="list-style-type: none; padding: 0; font-size: 17px; text-align: left; max-width: 800px; margin: 0 auto;">
         <li><a href="#" target="_blank" style="color: #007BFF; text-decoration: none;">🔗
-            Wix - Coming Soon..</a></li>
+            Blender -</a></li>
         <li><a href="#" target="_blank" style="color: #007BFF; text-decoration: none;">🔗
-            Appsheet - ZFam Homestay System (In Progress)</a></li>
+            Wix -</a></li>
+        <li><a href="#" target="_blank" style="color: #007BFF; text-decoration: none;">🔗
+            Appsheet - ZFam Homestay System</a></li>
       </ul>
+
+
+<div class="image6-section-container">
+    <div class="image6-section" id="video-container">
+      <img id="thumbnail" src="images/3D Donuts v2.png" alt="Blender" class="same-size" />
+      <div class="image6-text">
+        <h3>Blender</h3>
+        <p>Created 3D Donuts Modelling using Blender.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('video-container');
+    const thumbnail = document.getElementById('thumbnail');
+
+    thumbnail.addEventListener('click', () => {
+      container.innerHTML = `
+        <video class="same-size" controls autoplay>
+          <source src="images/3D Donuts Animation.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="image6-text">
+          <h3>Blender</h3>
+          <p>Created 3D Donuts Modelling using Blender.</p>
+        </div>
+      `;
+    });
+  </script>
+
+
+
+
+
     </div>
 
-    <div class="image5-section-container">
-      <a href="images/3D Donuts.png"
-          class="image4-link"  target="_blank">
-        <div class="image5-section">
-          <img src="images/3D Donuts.png" alt="Blender">
-          <div class="image5-text">
-            <h3>Blender</h3>
-            <p>Created 3D Donuts Modelling using Blender.</p>
-          </div>
-        </div>
-        </a>
-      </div>
   </section>
 
   <!-- Picture Section -->
@@ -385,12 +420,4 @@
   <p>© 2025 Mursyid Zul LLC. All Rights Reserved.</p>
 </footer>
 
-
 </html>
-
-
-
-
-
-
-
