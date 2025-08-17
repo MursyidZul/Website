@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mursyid Zul</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* -------------------------
+     NAVIGATION (original + subtle styling)
+     ------------------------- */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            /* keep space for fixed nav + lively background */
+            padding-top: 60px;
+            background: linear-gradient(180deg, #1a2a48, #16233a);
+            color: #ddd;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        nav {
+            background: rgba(25, 38, 65, 0.8);
+            /* dark blue with transparency */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            /* Align logo & button perfectly */
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            /* Logo left, button right */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animate to X */
+        .menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-btn.active span:nth-child(2) {
+            opacity: 0;
+            pointer-events: none;
+            width: 0;
+        }
+
+        .menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Menu Items (Mobile default - hidden) */
+        .menu-items {
+            flex-wrap: nowrap;
+            position: absolute;
+            right: 60px;
+            /* keeps menu near the button */
+            top: 10px;
+            background-color: #333;
+            padding-right: 5px;
+            gap: 0;
+            max-width: 0;
+            /* hidden by default */
+            max-height: none;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-width 0.5s ease, opacity 0.3s ease;
+        }
+
+        .menu-items.show {
+            max-width: 200px;
+            /* reduced from 600px to 200px */
+            opacity: 1;
+        }
+
+        .menu-items a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: background 0.3s;
+            display: block;
+            flex: 1 1 100%;
+            text-align: right;
+        }
+
+        .menu-items a:hover {
+            background-color: #3d5a99;
+        }
+
+        /* Desktop View (≥768px) */
+        /* Desktop View (≥768px) */
+        @media (min-width: 768px) {
+            .menu-items {
+                flex-wrap: nowrap;
+                position: absolute;
+                right: 60px;
+                top: 10px;
+                background-color: transparent;
+                /* keep transparent for blur effect */
+                padding-right: 5px;
+                gap: 10px;
+                /* spacing between items */
+                max-width: 300px;
+                /* smaller max-width to keep close */
+                max-height: none;
+                opacity: 0;
+                overflow: hidden;
+                display: flex;
+                /* horizontal layout */
+                transition: max-width 0.5s ease, opacity 0.3s ease;
+            }
+
+            .menu-items.show {
+                max-width: 300px;
+                /* same as above */
+                opacity: 1;
+            }
+
+            .menu-items a {
+                flex: 0 0 auto;
+                white-space: nowrap;
+                opacity: 0;
+                transform: translateX(20px);
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                text-align: right;
+                padding: 10px 15px;
+                color: white;
+                text-decoration: none;
+            }
+
+            .menu-items.show a {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .menu-items.show a:hover {
+                background-color: #3d5a99;
+            }
+
+            .menu-items.show a:nth-child(1) {
+                transition-delay: 0.1s;
+            }
+
+            .menu-items.show a:nth-child(2) {
+                transition-delay: 0.2s;
+            }
+
+            .menu-items.show a:nth-child(3) {
+                transition-delay: 0.3s;
+            }
+
+            .menu-items.show a:nth-child(4) {
+                transition-delay: 0.4s;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .menu-items {
+                flex-wrap: nowrap;
+                position: absolute;
+                right: 60px;
+                top: 10px;
+                background-color: transparent;
+                /* keep transparent for blur effect */
+                padding-right: 5px;
+                gap: 0;
+                max-width: 0;
+                max-height: none;
+                opacity: 0;
+                overflow: hidden;
+                transition: max-width 0.5s ease, opacity 0.3s ease;
+            }
+
+            .menu-items.show {
+                max-width: 600px;
+                opacity: 1;
+            }
+
+            .menu-items a {
+                flex: 0 0 auto;
+                white-space: nowrap;
+                opacity: 0;
+                transform: translateX(20px);
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+
+            .menu-items.show a {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .menu-items.show a:nth-child(1) {
+                transition-delay: 0.1s;
+            }
+
+            .menu-items.show a:nth-child(2) {
+                transition-delay: 0.2s;
+            }
+
+            .menu-items.show a:nth-child(3) {
+                transition-delay: 0.3s;
+            }
+
+            .menu-items.show a:nth-child(4) {
+                transition-delay: 0.4s;
+            }
+        }
+
+        /* -------------------------
+     "ALIVE" THEME (projects)
+     ------------------------- */
+        header.site-title {
+            background: linear-gradient(135deg, #3d5a99, #6f1cc8);
+            color: white;
+            padding: 1.25rem 20px;
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+            max-width: 1800px;
+            /* updated */
+            margin: 18px auto 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        header.site-title::after {
+            content: "";
+            position: absolute;
+            top: -10%;
+            left: -60%;
+            width: 220%;
+            height: 120%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.12));
+            transform: rotate(-18deg);
+            animation: headerGlow 5s linear infinite;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* strict 4 columns on desktop as you wanted */
+            gap: 20px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 8px auto 60px;
+        }
+
+        /* Responsive: 3 / 2 / 1 */
+        @media (max-width: 1100px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project {
+            background: #1f2c48;
+            /* slightly dark background */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+            transition: transform 0.28s cubic-bezier(.2, .9, .3, 1), box-shadow 0.28s;
+            opacity: 0;
+            /* will fade in via animation */
+            animation: fadeUp .7s ease forwards;
+            color: white;
+        }
+
+        .project:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7);
+        }
+
+        .project img,
+        .project video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: opacity .28s ease;
+            cursor: pointer;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .project video {
+            display: none;
+        }
+
+        .caption {
+            padding: 14px;
+            background: linear-gradient(180deg, rgba(25, 38, 65, 0.9), rgba(25, 38, 65, 0.9));
+            transition: background .25s ease, transform .25s ease;
+            border-radius: 0 0 12px 12px;
+            color: #c1d9e8;
+        }
+
+        .project:hover .caption {
+            transform: translateY(-2px);
+            background: linear-gradient(180deg, #2a4073, #1b2a49);
+            color: #a9cde3;
+        }
+
+        .caption h3 {
+            margin: 0;
+            font-size: 1.02rem;
+            color: #cdd9f7;
+        }
+
+        .caption p {
+            margin: 8px 0 0;
+            font-size: .9rem;
+            color: #91a7c5;
+            line-height: 1.35;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes headerGlow {
+            from {
+                left: -60%;
+            }
+
+            to {
+                left: 60%;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #10193B;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+
+        .social-icons a {
+            color: white;
+            margin: 0 8px;
+            font-size: 1.4rem
+        }
+
+        /* Footer social icons spacing on very small screens */
+        @media (max-width: 400px) {
+            .social-icons a {
+                font-size: 20px;
+                margin: 0 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV (preserved exactly your structure) -->
+    <nav>
+        <div style="display:flex; align-items:center; gap:15px;">
+            <div class="logo"><img src="images/mz white.png" alt="MZ Logo"></div>
+            <div class="left-links" style="display:flex; gap:12px;">
+                <!-- <a href="mzcompany/index.html" style="color:white; text-decoration:none;">@MzCompany</a> -->
+                <a href="index.html" style="color:white; text-decoration:none;">@mursyidzul</a>
+            </div>
+        </div>
+
+        <div class="menu-items">
+            <a href="index.html">About</a>
+            <a href="index.html">Portfolio</a>
+            <a href="index.html">Experience</a>
+            <a href="3dpage.html">3D Models</a>
+            <a href="index.html">Contact</a>
+        </div>
+        <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- Lively site header -->
+    <header class="site-title">My 3D Modeling</header>
+
+    <!-- GRID with 4 columns -->
+    <div class="gallery">
+        <!-- example project -->
+        <div class="project">
+            <img src="images/3D Donuts v2.png" alt="Project 1" onclick="playVideo(this)">
+            <video src="images/3D Donuts Animation.mp4" muted></video>
+            <div class="caption">
+                <h3>3D Donuts Animation</h3>
+                <p>Created 3D Donuts Modeling using Blender.</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="images/3D Ice Cream.png" alt="Project 2" onclick="playVideo(this)">
+            <video src="" muted></video>
+            <div class="caption">
+                <h3>3D Ice Creams</h3>
+                <p>Created 3D Ice Creams Modeling using Blender.</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="images/3D Car.png" alt="Project 3" onclick="playVideo(this)">
+            <video src="" muted></video>
+            <div class="caption">
+                <h3>3D Car</h3>
+                <p>Created 3D Car Modeling using Blender.</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="" alt="Project 4" onclick="playVideo(this)">
+            <video src="" muted></video>
+            <div class="caption">
+                <h3>Slot 4</h3>
+                <p>Remaining Slot.</p>
+            </div>
+        </div>
+
+
+
+        <!-- add more projects as needed -->
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/mursyid-zul-689638242/" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-steam"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+        <p>© 2025 Mursyid Zul LLC. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // NAV toggle (keep your original behavior)
+        const menuBtn = document.querySelector('.menu-btn');
+        const menuItems = document.querySelector('.menu-items');
+
+        menuBtn.addEventListener('click', () => {
+            menuItems.classList.toggle('show');
+            menuBtn.classList.toggle('active');
+        });
+
+        // PLAY video on thumbnail click (reload video each time clicked)
+        function playVideo(imgElement) {
+            const project = imgElement.closest('.project');
+            const video = project.querySelector('video');
+            imgElement.style.display = 'none';
+            video.style.display = 'block';
+            video.pause();
+            video.currentTime = 0;
+            video.play().catch(() => { /* ignore autoplay fail */ });
+
+            // When video ends, revert to thumbnail
+            video.onended = () => {
+                video.style.display = 'none';
+                imgElement.style.display = 'block';
+            };
+        }
+    </script>
+
+</body>
+
+</html>
