@@ -1278,6 +1278,291 @@
       font-size: 0.85rem;
     }
   }
+
+        /* Responsive Layout */
+@media (max-width: 768px) {
+    .image4-section-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image4-section {
+        max-width: 90%;
+    }
+}
+
+.image4-link, .image5-link {
+  display: block;
+  text-decoration: none;
+  color: inherit; /* Optional: retain original text color */
+}
+
+.image4-link:hover, .image5-link:hover {
+  opacity: 0.9; /* Optional: add hover effect */
+  cursor: pointer;
+}
+
+
+
+.image5-section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px 10px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.image5-section {
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.image5-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image5-text {
+    padding: 20px;
+    text-align: left;
+}
+
+.image5-text h3 {
+    color: #F06565;
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+}
+
+.image5-text p {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+
+/*Video */
+.image6-section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px 10px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.image6-section {
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.image6-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image6-text {
+    padding: 20px;
+    text-align: left;
+}
+
+.image6-text h3 {
+    color: #F06565;
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+}
+
+.image6-text p {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.same-size {
+  width: 430px;      /* increased from 340px */
+  height: 304px;     /* adjusted height to keep roughly same aspect ratio */
+  object-fit: cover;
+  display: block;
+}
+
+#thumbnail {
+  cursor: pointer;
+}
+
+.image6-section-container {
+  max-width: 430px;  /* increased container width to match */
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.image6-text {
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* Your original CSS above... (unchanged) */
+
+
+/* --- Additional Responsive Adjustments --- */
+
+/* Make image-section and image3-section widths more fluid */
+@media (max-width: 1024px) {
+  .image-section,
+  .image3-section {
+    width: 90%;  /* flexible width instead of fixed px */
+    max-width: 400px;
+  }
+}
+
+/* Prevent horizontal overflow from nav sections */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap; /* allow nav items to wrap instead of squeezing */
+  }
+  .left-section,
+  .right-section {
+    flex-wrap: wrap;
+    justify-content: center; /* center nav items on small screens */
+  }
+}
+
+/* Fix section>div flex container on smaller screens */
+@media (max-width: 768px) {
+  section > div {
+    flex-wrap: wrap !important; /* ensure children wrap */
+    justify-content: center !important;
+  }
+}
+
+/* Images inside .random-size, keep max width and auto height */
+.random-size {
+  max-width: 280px;
+  width: 100%;
+  height: auto !important;
+}
+
+/* Make sure timeline content doesn't overflow on small screens */
+@media (max-width: 600px) {
+  .timeline-content {
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
+/* Footer social icons spacing on very small screens */
+@media (max-width: 400px) {
+  .social-icons a {
+    font-size: 20px;
+    margin: 0 6px;
+  }
+}
+
+/* Existing nav styles remain as-is, just add/update these */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #1e1e1e;
+  flex-wrap: nowrap; /* Prevent wrapping on desktop */
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.left-section .logo img {
+  width: 60px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.left-section .logo a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  white-space: nowrap;  /* Prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px; /* Limit width so it doesn't push others */
+}
+
+/* Right Section styles */
+.right-section {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap; /* No wrapping on desktop */
+  white-space: nowrap;
+}
+
+/* ==== MOBILE === */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap; /* allow stacking */
+    align-items: flex-start;
+  }
+
+  .left-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: nowrap; /* prevent wrapping inside */
+  }
+
+  .left-section .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap; /* keep logo + text in one row */
+    flex-shrink: 0;
+  }
+
+  .left-section .logo img {
+    width: 40px; /* smaller logo on mobile */
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .left-section .logo a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100vw - 60px); /* dynamic max width so it fits beside logo */
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .right-section {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-start;
+  }
+
+  .right-section a {
+    flex: 1 1 auto; /* flexible buttons */
+    min-width: 90px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 6px 8px;
+    box-sizing: border-box;
+  }
+}
     </style>
 </head>
 
@@ -1483,5 +1768,6 @@
         }
     </script>
 </body>
+
 
 </html>
