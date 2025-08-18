@@ -292,70 +292,103 @@
 
 
 <div class="image6-section-container">
-    <div class="image6-section" id="video-container">
-      <img id="thumbnail" src="images/3D Donuts v2.png" alt="Blender" class="same-size" />
-      <div class="image6-text">
-        <h3>3D Donuts Animation</h3>
-        <p>Created 3D Donuts Modeling using Blender.</p>
-      </div>
+  <div class="image6-section">
+    <img src="images/3D Donuts v2.png" alt="Blender" class="same-size thumbnail"
+      data-video="images/3D Donuts Animation.mp4"
+      data-title="3D Donuts Animation"
+      data-desc="Created 3D Donuts Modeling using Blender."
+      data-img="images/3D Donuts v2.png" />
+    <div class="image6-text">
+      <h3>3D Donuts Animation</h3>
+      <p>Created 3D Donuts Modeling using Blender.</p>
     </div>
   </div>
+</div>
 
 <div class="image6-section-container">
-    <div class="image6-section" id="video-container">
-      <img id="thumbnail" src="images/3D Ice Cream.png" alt="Blender" class="same-size" />
-      <div class="image6-text">
-        <h3>3D Ice Creams</h3>
-        <p>Created 3D Ice Creams Modeling using Blender.</p>
-      </div>
+  <div class="image6-section">
+    <img src="images/3D Ice Cream.png" alt="Blender" class="same-size thumbnail"
+      data-video="images/3D Ice Cream Animation.mp4"
+      data-title="3D Ice Cream Animation"
+      data-desc="Created 3D Ice Cream Modeling using Blender."
+      data-img="images/3D Ice Cream.png" />
+    <div class="image6-text">
+      <h3>3D Ice Creams</h3>
+      <p>Created 3D Ice Creams Modeling using Blender.</p>
     </div>
   </div>
+</div>
 
-      <div class="image6-section-container">
-    <div class="image6-section" id="video-container">
-      <img id="thumbnail" src="images/3D Car.png" alt="Blender" class="same-size" />
-      <div class="image6-text">
-        <h3>3D Car</h3>
-        <p>Created 3D Car Modeling using Blender.</p>
-      </div>
+<div class="image6-section-container">
+  <div class="image6-section">
+    <img src="images/3D Car.png" alt="Blender" class="same-size thumbnail"
+      data-video="images/3D Car Animation.mp4"
+      data-title="3D Car Animation"
+      data-desc="Created 3D Car Modeling using Blender."
+      data-img="images/3D Car.png" />
+    <div class="image6-text">
+      <h3>3D Car</h3>
+      <p>Created 3D Car Modeling using Blender.</p>
     </div>
   </div>
+</div>
 
-  <script>
-    const container = document.getElementById('video-container');
-    const thumbnail = document.getElementById('thumbnail');
-
+<script>
+  document.querySelectorAll('.thumbnail').forEach(thumbnail => {
     thumbnail.addEventListener('click', () => {
+      const container = thumbnail.parentElement;
+      const videoSrc = thumbnail.getAttribute('data-video');
+      const title = thumbnail.getAttribute('data-title');
+      const desc = thumbnail.getAttribute('data-desc');
+      const imgSrc = thumbnail.getAttribute('data-img');
+
       container.innerHTML = `
         <video class="same-size" controls autoplay>
-          <source src="images/3D Donuts Animation.mp4" type="video/mp4" />
+          <source src="${videoSrc}" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div class="image6-text">
-          <h3>3D Donuts Animation</h3>
-          <p>Created 3D Donuts Modeling using Blender.</p>
+          <h3>${title}</h3>
+          <p>${desc}</p>
         </div>
+        <button class="back-btn">⬅ Back</button>
       `;
-    });
-  </script>
 
-      <script>
-    const container = document.getElementById('video-container');
-    const thumbnail = document.getElementById('thumbnail');
-
-    thumbnail.addEventListener('click', () => {
-      container.innerHTML = `
-        <video class="same-size" controls autoplay>
-          <source src="images/3D Ice Cream Animation.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div class="image6-text">
-          <h3>3D Ice Cream Animation</h3>
-          <p>Created 3D Ice Cream Modeling using Blender.</p>
-        </div>
-      `;
+      // Handle back button
+      container.querySelector('.back-btn').addEventListener('click', () => {
+        container.innerHTML = `
+          <img src="${imgSrc}" alt="Blender" class="same-size thumbnail"
+            data-video="${videoSrc}"
+            data-title="${title}"
+            data-desc="${desc}"
+            data-img="${imgSrc}" />
+          <div class="image6-text">
+            <h3>${title}</h3>
+            <p>${desc}</p>
+          </div>
+        `;
+        // reattach event to new thumbnail
+        container.querySelector('.thumbnail').addEventListener('click', () => thumbnail.click());
+      });
     });
-  </script>
+  });
+</script>
+
+<style>
+  .back-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #1f284d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .back-btn:hover {
+    background: #10193b;
+  }
+</style>
+
 
 
 
@@ -449,6 +482,7 @@
 
 
 </html>
+
 
 
 
