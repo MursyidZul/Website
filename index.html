@@ -339,6 +339,24 @@
     });
   </script>
 
+      <script>
+    const container = document.getElementById('video-container');
+    const thumbnail = document.getElementById('thumbnail');
+
+    thumbnail.addEventListener('click', () => {
+      container.innerHTML = `
+        <video class="same-size" controls autoplay>
+          <source src="images/3D Ice Cream Animation.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="image6-text">
+          <h3>3D Ice Cream Animation</h3>
+          <p>Created 3D Ice Cream Modeling using Blender.</p>
+        </div>
+      `;
+    });
+  </script>
+
 
 
 
@@ -431,6 +449,7 @@
 
 
 </html>
+
 
 
 
